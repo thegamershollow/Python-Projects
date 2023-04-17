@@ -118,13 +118,6 @@ if gameVer == 0:
     gameVer = "Ruby/Sapphire"
 print(gameVer+' Save')
 
-#* Checksum
-
-savFile.seek(0x0FF6)
-checksumRead = savFile.read(2)
-
-#print(checksumRead)
-
 #* Trainer Data
 print('-Trainer Info-')
 
