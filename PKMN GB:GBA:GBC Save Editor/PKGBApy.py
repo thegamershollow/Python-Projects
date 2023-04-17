@@ -1,9 +1,9 @@
-import binascii
+import binascii as bin
+import numpy as np
 from pathlib import Path
 
 #* FireRed Save File Path: "/Users/Cal/Downloads/Pokemon FireRed.sav"
 '/Users/Cal/Documents/Github/Python-Projects/PKMN GB:GBA:GBC Save Editor/Saves (For analysis)/Pokemon - Fire Red Version (U) (V1.1).sav'
-
 savFilePath = '/Users/Cal/Documents/Github/Python-Projects/PKMN GB:GBA:GBC Save Editor/Saves (For analysis)/Pokemon - Fire Red Version (U) (V1.1).sav'
 savFilePath = savFilePath.replace("'","")
 savFile = open(savFilePath, 'rb')
@@ -119,7 +119,7 @@ if gameVer == 0:
 print(gameVer+' Save')
 
 #* Trainer Data
-print('-Trainer Info-')
+print('\n'+'-Trainer Info-'+'\n')
 
 # Trainer Name
 savFile.seek(0x0000)
@@ -156,3 +156,37 @@ secretID1 = secretID1.hex()
 secretID = int(secretID0+secretID1, 16)
 secretID = str(secretID)
 print('Secret ID: '+secretID)
+
+# Rival Name
+savFile.seek(0x0BCC)
+rivalName = savFile.read(7)
+rivalName = decodeText(rivalName)
+print('Rival Name: '+rivalName)
+
+
+
+#* Team/Items
+print('\n'+'-Team/Items-'+'\n')
+# Team PKMN
+#*WIP
+#savFile.seek(0x0038)
+#teamPKMN = savFile.read(100)
+#print(teamPKMN)
+
+#* Security Key
+savFile.seek(0x0AF8)
+secKey = savFile.read(4)
+secKey = bin.hexlify(secKey)
+print(secKey)
+'XORed'
+
+# PC Items
+savFile.seek(0x0298)
+pcItm = savFile.read(120)
+
+# Item Pocket
+savFile.seek(0x0310)
+itmPk = savFile.read(168)
+print(itmPk)
+
+
