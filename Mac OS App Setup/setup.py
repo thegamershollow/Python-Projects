@@ -34,14 +34,13 @@ os.system('termtitle '+title)
 os.system('clear')
 logo = pyfiglet.figlet_format("\nMac OS Setup\n")
 print(logo)
-prompt1 = '1. Install Homebrew package manager\n2. Select recommended packages to install\n3. exit\n\n:'
-input(prompt1)
+prompt1 = input('1. Install Homebrew package manager\n2. Select recommended packages to install\n3. exit\n\n:')
 if prompt1 == '1':
     os.system('clear')
     print(logo)
     print('Starting Install of the Homebrew package manager.')
-    install_command = 
-if prompt1 == '2':
+    download_install_script = download('https://raw.githubusercontent.com/thegamershollow/Python-Projects/main/Mac%20OS%20App%20Setup/homebrew-install.sh','install.sh')
+    os.system('sh install.sh')
 if prompt1 == '3':
     sys.exit('Exiting')
 
