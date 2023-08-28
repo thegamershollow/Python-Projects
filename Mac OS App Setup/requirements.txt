@@ -1,0 +1,4 @@
+requests
+termtitle
+colorama
+pyfiglet
